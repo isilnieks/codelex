@@ -6,10 +6,10 @@ for ($i = 0; $i < count($animals) - 1; $i++) {
         echo 'HEHE ';
     } elseif ($animals[$i] === 'sheep' && $animals[$i + 1] === 'wolf') {
         echo 'OMG ';
-    } else{
+    } else {
         echo 'Happy ';
     }
 }
-if(end($animals)){
+if (end($animals)) {
     echo 'Happy ';
 }
