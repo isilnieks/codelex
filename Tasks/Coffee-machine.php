@@ -6,6 +6,7 @@ foreach ($money as $key => $value) {
 }
 $wallet = array_sum($total);
 $acceptableCoins = [];
+
 foreach ($money as $key => $value) {
     array_push($acceptableCoins, $key);
 }
@@ -25,6 +26,7 @@ if ($choice != 1 && $choice != 2 && $choice != 3) {
     echo 'There is no such product. Try again.' . PHP_EOL;
     goto tryAgain;
 }
+
 if ($choice == 1) {
     $price = 190;
     $coinsEntered = [];
