@@ -5,11 +5,6 @@ foreach ($money as $key => $value) {
     $total[] = $key * $value;
 }
 $wallet = array_sum($total);
-$acceptableCoins = [];
-
-foreach ($money as $key => $value) {
-    array_push($acceptableCoins, $key);
-}
 
 echo "You have $wallet coins in your wallet\n";
 
