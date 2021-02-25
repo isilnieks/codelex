@@ -11,7 +11,7 @@ function moneyCount(array $money): int{
 
 $wallet = moneyCount($money);
 
-echo $wallet . ' coins' . PHP_EOL;
+echo 'You have ' . $wallet . ' coins' . PHP_EOL;
 
 $price = 200;
 $coinsEntered = [];
