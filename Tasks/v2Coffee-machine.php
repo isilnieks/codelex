@@ -10,7 +10,7 @@ $menu = [
     ],
     3 => [
         'name' => 'Black Coffee',
-        'price' => 203
+        'price' => 200
     ],
 ];
 $money = [1 => 10, 2 => 5, 5 => 3, 10 => 4, 20 => 2, 50 => 2, 100 => 2, 200 => 1];
@@ -47,10 +47,10 @@ $coinsEntered = [];
 while ($price > array_sum($coinsEntered)) {
     $leftToPay = $price - array_sum($coinsEntered);
     $customerInput = readline("Enter $leftToPay coins: ");
-    if (isset($customerInput,$money) && $money[$customerInput] > 0) {
+    if (isset($customerInput, $money) && $money[$customerInput] > 0) {
         array_push($coinsEntered, $customerInput);
         $money[$customerInput] = $money[$customerInput] - 1;
-    }else {
+    } else {
         echo 'Invalid coin or insufficient amount of coins ' . PHP_EOL;
     }
 }
@@ -71,12 +71,22 @@ echo isThereChange($coinsEntered, $price, $change);
 
 if ($change > 0) {
     foreach (array_reverse($money, true) as $key => $value) {
-        if ($key <= $change) {
-            echo 'Returned coin: ' . $key . PHP_EOL;
-            $money[$key] = $money[$key] + 1;
-            $change -= $key;
+        if ($change < $key) {
+            continue;
+        }
+        $num = intdiv($change, $key);
+
+        echo "Returned {$key} - {$num} coins\n";
+
+        $change -= $key * $num;
+
+        $money[$key]++;
+
+        if ($change === 0) {
+            break;
         }
     }
 }
+
 $wallet = moneyCount($money);
 echo $wallet . ' coins left in your wallet' . PHP_EOL;
