@@ -104,8 +104,6 @@ do {
             if ($slots[0][2] === 'O' && $slots[1][1] === 'O' && $slots[2][0] === 'O') {
                 $freespins = +5;
             }
-
-
         }
     } while ($freespins != 0);
 
@@ -131,9 +129,6 @@ do {
         } else {
             echo 'Invalid input or ran out of coins' . PHP_EOL;
         }
-
     } while ($choice !== 'y');
-
-
 
 } while ($money != 0);
