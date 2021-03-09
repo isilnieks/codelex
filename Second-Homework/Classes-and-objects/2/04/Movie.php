@@ -1,44 +1,48 @@
 <?php
 
-Class Movie{
+require_once 'MovieCollection.php';
+
+class Movie
+{
 
     private string $title;
     private string $studio;
     private string $rating;
-    private array $movies = [];
 
 
-    public function __construct(string $title,string $studio, string $rating)
+    public function __construct(string $title, string $studio, string $rating)
     {
         $this->title = $title;
         $this->studio = $studio;
         $this->rating = $rating;
     }
 
-    public function addMovies($movie):void
+    public function getRating(): string
     {
-        $this->movies = $movie;
+        return $this->rating;
     }
 
-    public function getPG(): array
+    public function getTitle(): string
     {
-        return array_filter($this->movies,function (Movie $movie) {
-            return $movie->rating === 'PG';
-        });
+        return $this->title;
+    }
+
+    public function getStudio(): string
+    {
+        return $this->studio;
     }
 
 
 }
 
-$casino = new Movie('Casino Royale','Eon Productions' ,'PG13');
-$glass = new Movie('Glass','Buena Vista International' ,'PG13');
-$spiderMan = new Movie('Spider-Man: Into the Spider-Verse','Columbia Pictures' ,'PG');
+$movies = new MovieCollection();
+$movies->addMovie(new Movie('Casino Royale', 'Eon Productions', 'PG13'));
+$movies->addMovie(new Movie('Glass', 'Buena Vista International', 'PG13'));
+$movies->addMovie(new Movie('Spider-Man: Into the Spider-Verse', 'Columbia Pictures', 'PG'));
 
-$movies = [
-    $casino,
-    $glass,
-    $spiderMan
-];
+foreach ($movies->getPG() as $movie) {
+    echo $movie->getTitle() . '. Studio: ' . $movie->getStudio() . '. Rating: ' . $movie->getRating() . PHP_EOL;
+}
 
 
 

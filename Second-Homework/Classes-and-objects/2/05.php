@@ -13,34 +13,52 @@ class Date
         $this->year = $year;
     }
 
-    public function setMonth(int $month){
+    public function setMonth(int $month): void
+    {
         $this->month = $month;
     }
-    public function setDay(int $day){
+
+    public function setDay(int $day): void
+    {
         $this->day = $day;
     }
-    public function setYear(int $year){
+
+    public function setYear(int $year): void
+    {
         $this->year = $year;
     }
+
     public function getMonth(): int
     {
         return $this->month;
     }
+
     public function getDay(): int
     {
         return $this->day;
     }
+
     public function getYear(): int
     {
         return $this->year;
     }
 
-    public function DisplayDate(){
+    public function DisplayDate(): string
+    {
         return "$this->month/$this->day/$this->year";
     }
 
 
 }
-$test = new Date(12,24,2020);
 
-echo $test->DisplayDate() . PHP_EOL;
+
+$test = new Date(12, 31, 2020);
+
+if (checkdate($test->getMonth(), $test->getDay(), $test->getYear())) {
+    echo $test->DisplayDate() . PHP_EOL;
+} else {
+    echo 'Invalid date' . PHP_EOL;
+}
+
+
+
