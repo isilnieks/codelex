@@ -4,6 +4,9 @@ class IngredientsCollection
 {
     private array $ingredients = [];
 
+    /**
+     * @return array
+     */
     public function getIngredients(): array
     {
         return $this->ingredients;

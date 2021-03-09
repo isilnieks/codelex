@@ -9,4 +9,11 @@ class Ingredients
         $this->ingredient = $ingredient;
     }
 
+    /**
+     * @return string
+     */
+    public function getIngredient(): string
+    {
+        return $this->ingredient;
+    }
 }

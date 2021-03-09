@@ -2,8 +2,11 @@
 
 class RecipesCollection
 {
-    private array $recipes = [];
+    private array $recipes;
 
+    /**
+     * @return array
+     */
     public function getRecipes(): array
     {
         return $this->recipes;
@@ -13,9 +16,5 @@ class RecipesCollection
     {
         $this->recipes[] = $recipes;
     }
-
-
-
-
 
 }
