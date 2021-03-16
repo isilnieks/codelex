@@ -6,13 +6,13 @@ require_once 'CarCollection.php';
 require_once 'RaceTrack.php';
 require_once 'FlyingCar.php';
 
-$road = new RaceTrack();
+$raceTrack= new RaceTrack();
 $rivals = new CarCollection();
 $rivals->addCars($mcqueen = new Car('McQueen', 3, 5,'Q'));
 $rivals->addCars($dinoco = new Car('Dinoco', 2, 5,'D'));
 $rivals->addCars($chickhick = new Car('Chick Hicks', 2, 3,'C'));
 $rivals->addCars($magicCar = new FlyingCar('Magician',5,5, '^'));
-$race = new Race($rivals,$road);
+$race = new Race($rivals,$raceTrack);
 $race->race();
 
 $place = 1;

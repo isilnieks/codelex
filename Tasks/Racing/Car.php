@@ -8,7 +8,7 @@ class Car implements VehicleInterface
     private int $min;
     private int $max;
     private string $symbol;
-    private int $racePosition = 0;
+    private int $carLocation = 0;
     private int $time = 0;
 
     public function __construct(string $name, int $min, int $max, string $symbol)
@@ -36,12 +36,12 @@ class Car implements VehicleInterface
 
     public function trackLocation(): int
     {
-        return $this->racePosition;
+        return $this->carLocation;
     }
 
     public function drive(RaceTrack $track): string
     {
-        $this->racePosition += $this->getSpeed();
+        $this->carLocation += $this->getSpeed();
         return substr_replace($track->createTrack(), $this->getSymbol(), $this->trackLocation(), 1) . PHP_EOL;
     }
 
