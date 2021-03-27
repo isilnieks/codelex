@@ -14,6 +14,7 @@
 </div>
 <form action="/" method="get" target="">
     <?PHP
+    require_once 'vendor/autoload.php';
 
     use App\Game;
     use App\Elements\Element;
