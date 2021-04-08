@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Persons;
 
 use App\Models\Person;
 use App\Repositories\Persons\PersonRepository;
@@ -10,7 +10,7 @@ class MySQLPersonsRepository implements PersonRepository
 {
     private Medoo $database;
 
-   /* public function __construct()
+    public function __construct()
     {
         $this->database = new Medoo([
             'database_type' => 'mysql',
@@ -19,11 +19,6 @@ class MySQLPersonsRepository implements PersonRepository
             'username' => 'root',
             'password' => 'root'
         ]);
-    }*/
-
-    public function index()
-    {
-        return 'hello world';
     }
 
     public function searchByCode(string $code): array
@@ -76,7 +71,6 @@ class MySQLPersonsRepository implements PersonRepository
         ], [
             'age' => $age
         ]);
-
     }
 
     public function searchByCity(string $city): array
@@ -93,4 +87,10 @@ class MySQLPersonsRepository implements PersonRepository
         ]);
     }
 
+    public function login(string $login): bool
+    {
+        return $this->database->has('registry', [
+            'code' => $login
+        ]);
+    }
 }

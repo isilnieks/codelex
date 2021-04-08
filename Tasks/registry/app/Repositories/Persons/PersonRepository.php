@@ -12,5 +12,6 @@ interface PersonRepository
     public function editPerson(string $code, string $note): void;
     public function searchByAge(int $age): array;
     public function searchByCity(string $city): array;
+    public function login(string $login): bool;
 
 }
