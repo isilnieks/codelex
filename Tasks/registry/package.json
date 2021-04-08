@@ -1,0 +1,19 @@
+{
+  "name": "registry",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "build-css": "tailwindcss build app/styles.css -o public/styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "postcss-import": "^14.0.1",
+    "tailwindcss": "^2.1.1"
+  }
+}
