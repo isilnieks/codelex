@@ -3,7 +3,6 @@
 namespace App\Repositories\Persons;
 
 use App\Models\Person;
-use App\Repositories\Persons\PersonRepository;
 use Medoo\Medoo;
 
 class MySQLPersonsRepository implements PersonRepository
@@ -87,10 +86,4 @@ class MySQLPersonsRepository implements PersonRepository
         ]);
     }
 
-    public function login(string $login): bool
-    {
-        return $this->database->has('registry', [
-            'code' => $login
-        ]);
-    }
 }

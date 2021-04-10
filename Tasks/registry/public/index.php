@@ -3,9 +3,14 @@
 require '../vendor/autoload.php';
 
 use App\Controllers\HomeController;
+use App\Controllers\LoginController;
 use App\Repositories\Persons\PersonRepository;
 use App\Repositories\Persons\MySQLPersonsRepository;
+use App\Repositories\Tokens\MySQLTokenRepository;
+use App\Repositories\Tokens\TokenRepository;
 use App\Services\StorePersonService;
+use App\Services\StoreTokenService;
+
 
 
 $container = new League\Container\Container;
@@ -16,19 +21,27 @@ $container->add(StorePersonService::class, StorePersonService::class)
 $container->add(HomeController::class, HomeController::class)
     ->addArgument(StorePersonService::class);
 
+$container->add(TokenRepository::class, MySQLTokenRepository::class);
+$container->add(StoreTokenService::class,StoreTokenService::class)
+    ->addArgument(TokenRepository::class);
+$container->add(LoginController::class, LoginController::class)
+    ->addArgument(StoreTokenService::class);
+
+
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->addRoute('GET', '/', [HomeController::class, 'index']);
     $r->addRoute('GET', '/person', [HomeController::class, 'searchView']);
     $r->addRoute('POST', '/searchResult', [HomeController::class, 'search']);
-    $r->addRoute('GET', '/login', [HomeController::class, 'login']);
-    $r->addRoute('POST', '/login', [HomeController::class, 'loginSuccess']);
     $r->addRoute('GET', '/addPerson', [HomeController::class, 'addView']);
     $r->addRoute('POST', '/addPerson', [HomeController::class, 'addPerson']);
     $r->addRoute('GET', '/deletePerson', [HomeController::class, 'deleteView']);
     $r->addRoute('POST', '/deletePerson', [HomeController::class, 'deletePerson']);
     $r->addRoute('GET', '/editPerson', [HomeController::class, 'editView']);
     $r->addRoute('POST', '/editPerson', [HomeController::class, 'editPerson']);
+    $r->addRoute('GET', '/login', [LoginController::class, 'login']);
+    $r->addRoute('POST', '/login', [LoginController::class, 'loginSuccess']);
+    $r->addRoute('GET', '/dashboard', [LoginController::class, 'dashboard']);
 });
 
 // Fetch method and URI from somewhere

@@ -51,9 +51,5 @@ class StorePersonService
         return $this->repository->searchByCity($city);
     }
 
-    public function login(): bool
-    {
-        return $this->repository->login($_POST['login_code']);
-    }
 
 }

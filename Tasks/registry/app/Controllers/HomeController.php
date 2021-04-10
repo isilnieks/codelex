@@ -10,6 +10,7 @@ class HomeController
     private StorePersonService $service;
     private TwigService $environment;
 
+
     public function __construct(StorePersonService $service)
     {
         $this->service = $service;
@@ -58,18 +59,6 @@ class HomeController
         return $this->environment->twig->render('editSuccess.twig');
     }
 
-    public function login()
-    {
-        echo $this->environment->twig->render('LoginView.twig');
-    }
-
-    public function loginSuccess()
-    {
-        if ($this->service->login()) {
-            echo $this->environment->twig->render('LoginSuccess.twig');
-        }
-    }
-
     public function search()
     {
         if (isset($_POST['search_code'])) {
@@ -83,5 +72,7 @@ class HomeController
             'search' => $search
         ]);
     }
+
+
 
 }
