@@ -8,7 +8,6 @@ use Medoo\Medoo;
 class MySQLTokenRepository implements TokenRepository
 {
     private Medoo $database;
-
     public function __construct()
     {
         $this->database = new Medoo([
